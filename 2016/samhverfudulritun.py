@@ -1,24 +1,27 @@
-# 45 0.71s
+# Nær 100 stigum á aðeins 0.06s
+for k in range(1, 101):
+    highest = 2**k
+    if(len(str(highest)) == 1):
+        print(k, highest)
 
-def isPalindrome(number):
-    if(number[0] == number[-1]):
-        odd = 0
-        if(not len(number) % 2):
-            odd = 1
-        
-        middle = len(number)//2 - odd
-        for x in range(1, middle+1+odd):
-            if(number[middle-x+odd] != number[middle+x]):
-                return 0
-        return number
+    elif(len(str(highest)) % 2 == 0):
+        middle = len(str(highest))//2
+
+        half = int(str(highest)[0:middle])
+
+        for x in range(half):
+            palindrome = int(str(half-x)+str(half-x)[::-1])
+            if(palindrome <= highest):
+                print(k, palindrome)
+                break
+    
     else:
-        return 0
+        middle = len(str(highest))//2
 
-for k in range(1, 45):
-    biggestPalindrome = 0
-    for i in range(2**k, k, -1):
-        i = str(i)
-        palindrome = isPalindrome(i)
-        if palindrome:
-            break
-    print(k, palindrome)
+        half = int(str(highest)[0:middle+1])
+
+        for x in range(half):
+            palindrome = int(str(half-x)+str(half-x)[:-1][::-1])
+            if(palindrome <= highest):
+                print(k, palindrome)
+                break
