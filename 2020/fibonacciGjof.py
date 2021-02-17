@@ -1,13 +1,21 @@
 from math import sqrt
+from decimal import *
+
+getcontext().prec = 9
 
 # [Phi**n – (phi)**n] / Sqrt[5].
 def fibonacci(number):
-    phi_1 = ( 1 + sqrt(5) ) / 2
-    phi_2 = ( 1 - sqrt(5) ) / 2
+    sqrt_5 = Decimal(sqrt(5))
 
-    return float((phi_1**number - phi_2**number) / sqrt(5))
+    phi_1 = Decimal(( 1 +  sqrt_5) / 2)
+    phi_2 = Decimal(( 1 - sqrt_5 ) / 2)
 
+    print(Decimal(phi_1**number))
+    print(phi_2**number)
 
+    return Decimal((phi_1**number - phi_2**number) / sqrt_5)
+
+print("2427893228399975082453")
 print(fibonacci(104))
 '''
 n, m = map(int, input().split())
@@ -27,11 +35,9 @@ for x in range(m):
         l, r = action[1:]
 
         out = 0
-        print("These are the s")
         for x in numbers[l-1:r]:
-            print(x, fibonacci(x))
             out += fibonacci(x)
         
         #22704730358999870804252323
-        print("This is the output", out, out%(10**9+7))
+        print(out%(10**9+7))
 '''

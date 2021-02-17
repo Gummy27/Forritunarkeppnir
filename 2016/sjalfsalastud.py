@@ -1,3 +1,5 @@
+from math import ceil
+
 bottles, p10, p50, p100 = map(int, input().split(" "))
 
 price = bottles * 80
@@ -22,10 +24,16 @@ price = bottles * 80
 
 while(price):
     if(p50):
-        p50 -= 1
-        p10 -= 3
-        coins += 4
-        price -= 80
+        if(p50 >= 2 and p50 >= ceil(price / 50)):
+            p50 -= 2
+            p10 += 2
+            coins += 2
+            price -= 80
+        else:
+            p50 -= 1
+            p10 -= 3
+            coins += 4
+            price -= 80
     else:
         coins += price // 10
         break
