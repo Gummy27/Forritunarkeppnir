@@ -43,7 +43,10 @@ for x in range(100):
     if(not flag):
         # 2**n
         for x in range(100):
-            pass
+            if(equation(2**x) == encrypted):
+                print(x)
+                flag = True
+                break
     
     if(not flag):
         # Fibonacci number
@@ -61,6 +64,7 @@ for x in range(100):
 
     if(not flag):
         # Catalan number
+        catalan = lambda x : factorial(2*x) / (factorialx+1)*factorial(x)
         for x in range(100):
             pass
     

@@ -7,8 +7,8 @@ def removeFromMatrix(value, matrix):
                 nested.pop(secondIndex)
                 break
     
-    return matrix
-
+    return matrix, False
+'''
 n = int(input())
 
 sizes = []
@@ -17,6 +17,7 @@ for x in range(n):
 
 possible = []
 tShirt = list(map(int, input().split(" ")))
+
 
 for lowest, highest in sizes:
     temp = []
@@ -28,31 +29,36 @@ for lowest, highest in sizes:
     else:
         print("Neibb")
         sys.exit()
-
+'''
+possible = [[1, 2], [2, 3], [1, 3]]
 while(possible):
-    tempPossible = possible
+    flag = True
     offset = 0
     for index, x in enumerate(possible):
         if(len(x) == 1):
             possible.pop(index+offset)
             offset -= 1
-            possible = removeFromMatrix(x[0], possible)
+            possible, flag = removeFromMatrix(x[0], possible)
         elif(len(x) == 0):
             possible.pop(index+offset)
             offset -= 1
+            flag = False
 
     for index, x in enumerate(possible):
         temp = possible[:index:] 
         if(x and possible.count(x) > 1):
             if(possible.count(x) == len(x)):
                 for valueToDelete in list(x):
-                    possible = removeFromMatrix(valueToDelete, possible)
+                    possible, flag = removeFromMatrix(valueToDelete, possible)
             elif(possible.count(x) > len(x)):
                 print("Neibb")
                 sys.exit()
     
-    if(tempPossible == possible):
+
+    if(flag):
         print("Neibb")
-        sys.exit()
-print("Jebb")
+        break
+
+for x in range(n):
+    
 
