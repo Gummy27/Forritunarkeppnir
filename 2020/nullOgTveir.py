@@ -1,15 +1,33 @@
+def binaryToDecimal(binary):
+    decimal = 0
+    for index, value in enumerate(binary[::-1]):
+        if(int(value)):
+            decimal += 2**index
+
+    return int(decimal+1)
+
+def binaryDecrement(binary):
+    binary = int(''.join(binary)) // 2
+    
+    print(binary)
+    print(int(binary, 2))
+    
+    # return str(bin(int(binary, 2))+1).replace("0b", "")
+
+binaryDecrement(['2', '2'])
+
+'''
 n = int(input())
 
-for x in range(n, -1, -1):
-    if(str(x).count('0') + str(x).count('2') == len(str(x))):
-        highest = x
-        break
+highestBinary = []
+for x in range(len(str(n))):
+    highestBinary.append('2')
 
-print(highest)
-print(str(highest).replace('2', '1'))
-if(int(str(highest)[-1]) == 2):
-    print(2**len(str(highest))+1)
-else:
-    print(2**len(str(highest)))
-    
-    
+highestBinary = int(''.join(highestBinary))
+print(highestBinary)
+for x in range(n):
+    if(highestBinary <= n):
+        break
+    else:
+        highestBinary = int(int(highestBinary/2, 2)-1, 10)
+'''
